@@ -9,7 +9,7 @@
  **REMARKS :**  
  * **Theme:** if you use other tehme than sphinx_rtd_theme, you have to install it in dockerfile
  * **Security:** for local use only
- * **Git clone:** only use https so your repo should be publicly available. otherwaise setup an ssh key.
+ * **Git clone:** only use https so your repo should be publicly available. otherwise setup an ssh key.
  * **Git branch:** Not taken into account at this time. always cloning main/master.
 
 
