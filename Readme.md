@@ -8,6 +8,7 @@
 * check networking in docker-compose.yaml cause using bridge mode providing a docker network that coul be already in use on your setup.
 
  **REMARKS :**  
+ * **Cron task period :** is defined in docker compose for easy change. Default is short period (1min) for testing
  * **Theme:** if you use other tehme than sphinx_rtd_theme, you have to install it in dockerfile
  * **Security:** for local use only
  * **Git clone:** only use https so your repo should be publicly available. otherwise setup an ssh key.
@@ -18,8 +19,9 @@
 * 2 containers/services in docker compose:
   * **web_server :** nginx that mount a dedicated conf volume and map ports.
   * **cron_builder :** Run periodically a cron task calling python script.  
-  cron task and python script are copied in the image through dockerfile.
-  python script daily do the following
+  python script is copied in the image through dockerfile.  
+  cron task is defined in entrypoint.  
+  python script do the following:
     * git clone or git pull the listed repo
     * for each repo:
       * empty the build folder
