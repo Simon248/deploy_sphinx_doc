@@ -4,7 +4,8 @@
 
 * set the list of sphinx documentation repositories you want to deploy in  ```./repo_list/repolist.yaml```
 * then ```docker-compose up```
-* Access your documentation in browser at ```localhost:8080```
+* Access your documentation in browser at ~~```localhost:8080```~~ http://192.168.2.25/
+* check networking in docker-compose.yaml cause using bridge mode providing a docker network that coul be already in use on your setup.
 
  **REMARKS :**  
  * **Theme:** if you use other tehme than sphinx_rtd_theme, you have to install it in dockerfile
