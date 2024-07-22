@@ -12,11 +12,8 @@ RUN apt update && apt install -y --no-install-recommends \
 
 RUN pip3 install pyyaml sphinx_rtd_theme
 
-# COPY crontab /tmp/crontab
 COPY build_doc.py /build_doc.py
 COPY entrypoint.sh /entrypoint.sh
-# RUN crontab /tmp/crontab
-
 
 RUN chmod +x /build_doc.py /entrypoint.sh
 
