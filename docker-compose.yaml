@@ -20,8 +20,10 @@ services:
       - documentation_sphinx_deploy:/documentation_sphinx_deploy
       - ./repo_list:/repo_list
     environment:
+    # 1minute (for testing)
       - CRON_SCHEDULE=*/1 * * * *
-
+    # daily
+      # - CRON_SCHEDULE=0 0 * * *
 
 
 
