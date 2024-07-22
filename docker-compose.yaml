@@ -19,6 +19,13 @@ services:
       - documentation_sphinx_build:/documentation_sphinx_build
       - documentation_sphinx_deploy:/documentation_sphinx_deploy
       - ./repo_list:/repo_list
+    environment:
+      - CRON_SCHEDULE=*/1 * * * *
+
+
+
+
+  
 volumes:
   documentation_sphinx_build:
   documentation_sphinx_deploy:

@@ -1,2 +1,0 @@
-# Exécute une tâche toutes les minutes (ajustez cette ligne en fonction de votre besoin)
-*/1 * * * * /usr/local/bin/python3 /build_doc.py >> /var/log/cron.log 2>&1
