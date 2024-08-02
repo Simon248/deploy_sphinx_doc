@@ -10,8 +10,9 @@
  **REMARKS :**  
  * **Cron task period :** is defined in docker compose for easy change. Default is short period (1min) for testing
  * **Theme:** if you use other tehme than sphinx_rtd_theme, you have to install it in dockerfile
- * **Security:** for local use only
- * **Git clone:** only use https so your repo should be publicly available. otherwise setup an ssh key.
+ * **Security:** for local use only  
+ * ~~**Git clone:** only use https so your repo should be publicly available. otherwise setup an ssh key.~~
+ * **Git clone:** if git repo is private you can use a github token and put it into a .env file next to the docker-compose.yaml
  * **Git branch:** Not taken into account at this time. always cloning main/master.
 
 
