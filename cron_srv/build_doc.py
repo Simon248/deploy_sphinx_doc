@@ -67,16 +67,29 @@ def clone_repos():
         os.makedirs(BUILD_DIR)
 
     for repo in repos:
-        
         repo_name = repo.split('/')[-1].replace('.git', '')
         repo_path = os.path.join(BUILD_DIR, repo_name)
 
-        print(f"Cloning repository: {repo}")
+        if repo.startswith("https://"):
+            protocol = "https"
+        elif repo.startswith("git@"):
+            protocol = "ssh"
+            print('protocole ssh pas pris en charge pour le repo: {repo}')
+        else:
+            protocol = "unknown"
+            print('protocole inconnu pour le repo: {repo}')
+
+        if protocol == "https":          
+            token = os.getenv('GITHUB_TOKEN_DOC_DEPLOY')
+            if token is None:
+                print("GITHUB_TOKEN n'est pas défini, si dépot en privé ca va échouer.")
+            authenticated_url = repo.replace("https://", f"https://{token}@")
+            print(f"Cloning repository: {repo}")
 
         if os.path.exists(repo_path):
             subprocess.run(['git', '-C', repo_path, 'pull'], check=True)
         else:
-            subprocess.run(['git', 'clone', repo, repo_path], check=True)
+            subprocess.run(['git', 'clone', authenticated_url, repo_path], check=True)
 
         print(f"RAZ du dossier build")
         vider_dossier(os.path.join(repo_path, 'build'))

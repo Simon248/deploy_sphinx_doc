@@ -5,11 +5,11 @@ services:
     volumes:
       - documentation_sphinx_deploy:/usr/share/nginx/html
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-    # ports:
-    #   - "8080:80"
-    networks:
-      sphinx-bridge-network:
-        ipv4_address: 192.168.2.25
+    ports:
+      - "8080:80"
+    # networks:
+    #   sphinx-bridge-network:
+    #     ipv4_address: 192.168.2.25
 
   cron_builder:
     build:
@@ -19,11 +19,13 @@ services:
       - documentation_sphinx_build:/documentation_sphinx_build
       - documentation_sphinx_deploy:/documentation_sphinx_deploy
       - ./repo_list:/repo_list
+    env_file:
+      - .env
     environment:
     # 1minute (for testing)
-      - CRON_SCHEDULE=*/1 * * * *
+      #- CRON_SCHEDULE=*/1 * * * *
     # daily
-      # - CRON_SCHEDULE=0 0 * * *
+      - CRON_SCHEDULE=0 0 * * *
 
 
 
@@ -35,9 +37,9 @@ volumes:
 ### for simpler config, just comment all the networks tag below as well as in web_server.
 ### and uncomment ports remmaping in web_server
 ### then access through localhost:8080
-networks:
-  sphinx-bridge-network:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 192.168.2.0/24
+# networks:
+#   sphinx-bridge-network:
+#     driver: bridge
+#     ipam:
+#       config:
+#         - subnet: 192.168.2.0/24
