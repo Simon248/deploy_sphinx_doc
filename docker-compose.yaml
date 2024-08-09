@@ -23,9 +23,9 @@ services:
       - .env
     environment:
     # 1minute (for testing)
-      #- CRON_SCHEDULE=*/1 * * * *
+      #- CRON_SCHEDULE="*/1 * * * *"
     # daily
-      - CRON_SCHEDULE=0 0 * * *
+      - CRON_SCHEDULE="0 0 * * *"
 
 
 
