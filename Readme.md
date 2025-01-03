@@ -13,6 +13,9 @@
  * **Security:** for local use only  
  * ~~**Git clone:** only use https so your repo should be publicly available. otherwise setup an ssh key.~~
  * **Git clone:** if git repo is private you can use a github token and put it into a .env file next to the docker-compose.yaml
+    ```
+    GITHUB_TOKEN_DOC_DEPLOY=github_pat_XXXXYYYYZZZZZ
+    ```
  * **Git branch:** Not taken into account at this time. always cloning main/master.
 
 
